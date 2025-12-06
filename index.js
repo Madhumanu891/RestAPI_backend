@@ -17,8 +17,8 @@ const app = express();
 
 // middle wares
 const allowedOrigins = [
-  "https://rest-api-frontend-two.vercel.app/", // Vercel domain
-  "http://localhost:5173", // For local dev
+  "https://rest-api-frontend-two.vercel.app/", 
+  "http://localhost:5173", 
 ];
 
 app.use(
@@ -39,6 +39,9 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(express.json());
+app.use("/",(req,res)=>{
+  res.json({message:"Hello From Backend"})
+})
 
 app.use("/api", userRoutes);
 
@@ -46,4 +49,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
